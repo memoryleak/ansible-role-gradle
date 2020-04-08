@@ -1,0 +1,19 @@
+galaxy_info:
+  author: Haydar Ciftci
+  description: Download and extract Gradle
+  issue_tracker_url: https://github.com/memoryleak/ansible-role-gradle/issues
+  license: MIT
+  min_ansible_version: 2.9
+  platforms:
+  - name: EL
+    versions:
+    - 8
+  - name: Ubuntu
+    versions:
+    - bionic
+
+  galaxy_tags:
+    - gradle
+    - java
+
+dependencies: []

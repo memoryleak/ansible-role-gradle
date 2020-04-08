@@ -1,0 +1,8 @@
+---
+- name: Converge
+  hosts: all
+  no_log: false
+  tasks:
+    - name: "Include memoryleak.gradle"
+      include_role:
+        name: "memoryleak.gradle"

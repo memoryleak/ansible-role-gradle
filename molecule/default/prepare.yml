@@ -1,0 +1,11 @@
+---
+- name: Prepare
+  hosts: all
+  tasks:
+    - name: "Make sure unzip is available."
+      package:
+        name: unzip
+        state: present
+      tags:
+        - package
+        - unzip

@@ -1,0 +1,23 @@
+---
+- name: Create the directory Gradle is going to be installed to
+  file:
+    path: "{{ gradle_installation_parent }}"
+    recurse: True
+    state: directory
+    owner: "{{ gradle_installation_owner }}"
+    group: "{{ gradle_installation_group }}"
+  when: gradle_installation_parent_create
+  tags:
+    - file
+    - gradle
+
+- name: Download and extract Gradle
+  unarchive:
+    src: "{{ gradle_download_url }}"
+    dest: "{{ gradle_installation_parent }}"
+    remote_src: yes
+    owner: "{{ gradle_installation_owner }}"
+    group: "{{ gradle_installation_group }}"
+  tags:
+    - unarchive
+    - gradle
