@@ -1,7 +1,20 @@
 ---
 - name: Verify
   hosts: all
+  vars:
+    gradle_version: 6.2.2
+    gradle_download_url: "https://services.gradle.org/distributions/gradle-{{ gradle_version }}-bin.zip"
+    gradle_installation_parent: "{{ ansible_user_dir }}/.local/share/gradle"
+    gradle_installation_parent_create: True
+    gradle_installation_owner: "{{ ansible_user_id }}"
+    gradle_installation_group: "{{ ansible_effective_group_id }}"
   tasks:
-  - name: Example assertion
+  - stat:
+      path: "{{ ansible_user_dir }}/.local/share/gradle/gradle-{{ gradle_version }}"
+    register: gradle_dir
+    tags:
+      - stat
+
+  - name: Gradle installation exists
     assert:
-      that: true
+      that: gradle_dir.stat.isdir
